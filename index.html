@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connected by Light</title>
+    <style>
+        body {
+            background: url('starry sky.jpg') no-repeat center center fixed; 
+            background-size: cover;
+            color: #f3f3f3;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+            height: 100vh; 
+        }
+        h1 {
+            font-size: 3em;
+            color: #87CEEB; 
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px #FF69B4, 0 0 30px #FF69B4, 0 0 45px #FF69B4;
+        }
+        
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
+            color: #FF69B4;
+        }
+        .quote {
+            font-style: italic;
+            font-size: 1.5em;
+            margin-bottom: 40px;
+        }
+        .button {
+            background-color: #1414b8;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 10px;
+            margin-top: 30px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #6a6a9e;
+        }
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('starrysky,gif') repeat; 
+            opacity: 0.7;
+            z-index: -1; 
+        }
+        .song-list {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .song-button {
+            margin: 10px;
+            background-color: #4b4b8d;
+            padding: 15px;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1.2em;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+        }
+        .song-button:hover {
+            background-color: #6a6a9e;
+        }
+        .moon-button {
+            background-color: #6a6a9e;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.3em;
+            border-radius: 20px;
+            margin-top: 40px;
+            position: relative;
+            display: inline-block;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+        .moon-button:hover {
+            background-color: #5f5f89;
+            transform: scale(1.1);
+        }
+        .moon-button:before {
+            content: "🌙 ";
+            font-size: 1.5em;
+            position: absolute;
+            left: -35px;
+            top: 0;
+        }
+                /* Opening Screen */
+        .opening-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            flex-direction: column;
+            flex-direction: column;
+            backdrop-filter: blur(5px);
+        }
+
+        .opening-screen h2 {
+            color: #fff;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .opening-button {
+            background-color: #FF69B4;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .opening-button:hover {
+            background-color: #FF1493;
+        }
+
+        .opening-button:focus {
+            outline: none;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .content.visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Opening Screen -->
+    <div class="opening-screen" id="opening-screen">
+        <h2>Click to Open Your Gift</h2>
+        <button class="opening-button" onclick="openPage()">Open</button>
+    </div>
+
+    <div class="stars"></div>
+    <h1>Connected by Light</h1>
+    <div class="moon"></div>
+    <p class="quote">"Some things are not meant to last forever, but the light we shared will always be real."</p>
+    <p>"This bracelet was once meant for a version of us. Maybe it's just a memory now. Keep it, lose it — either way, it mattered."</p>
+    <p>"You once said you wanted Dexter: New Blood. So here it is, tucked away with all the good intentions."</p>
+    <p>"Take care of yourself. The world still needs your light."</p>
+    <p>"Connected by light, even across oceans, even across endings."</p>
+    
+    <p><strong>SANGE SAKUBE</strong> -My Sweet Thing</p>
+
+    <!-- Buttons for Songs -->
+    <div class="song-list">
+        <a href="https://www.youtube.com/watch?v=V_Ydoe4Q-Gg" target="_blank" class="song-button">Play Weird Fishes 🎵</a>
+        <a href="youtube.com/watch?v=plSbcQqgqSQ" target="_blank" class="song-button">Play That Home 🎶</a>
+        <a href="https://www.youtube.com/watch?v=plSbcQqgqSQ" target="_blank" class="song-button">Play You Made it Feel Like Home 🎧</a>
+    </div>
+
+    <a href="moon.jpg" target="_blank" class="button">Look at Dexter looking at the moon 🌙</a>
+
+    <script>
+        function openPage() {
+            // Hide the opening screen and show the content
+            document.getElementById("opening-screen").style.display = "none";
+            document.getElementById("content").classList.add("visible");
+        }
+    </script>
+
+</body>
+</html>
+
