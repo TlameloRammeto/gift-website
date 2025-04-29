@@ -13,9 +13,10 @@
             text-align: center;
             padding: 50px;
             position: relative;
-            overflow: hidden;
-            height: 100vh; 
+            height: 100vh;
+            min-height:100vh;
         }
+        
         h1 {
             font-size: 3em;
             color: #87CEEB; 
@@ -180,12 +181,12 @@
     <h1>Connected by Light</h1>
     <div class="moon"></div>
     <p class="quote">"Some things are not meant to last forever, but the light we shared will always be real."</p>
-    <p>"This bracelet was once meant for a version of us. Maybe it's just a memory now. Keep it, lose it — either way, it mattered."</p>
-    <p>"You once said you wanted Dexter: New Blood. So here it is, tucked away with all the good intentions."</p>
-    <p>"Take care of yourself. The world still needs your light."</p>
-    <p>"Connected by light, even across oceans, even across endings."</p>
+    <p>The bracelet was once meant for a version of us. Maybe it's just a memory now. Keep it, lose it — either way, it mattered.</p>
+    <p>The flashdrives has New Blood...tucked away with all the good intentions.</p>
+    <p>Take care of yourself. The world still needs your light.</p>
+    <p>Connected by light, even across oceans, even across endings.</p>
     
-    <p><strong>SANGE SAKUBE</strong> - My Sweet Thing</p>
+    <p><strong>GOOD-BYE SANGE SAKUBE</strong> - My Sweet Thing</p>
 
     <!-- Buttons for Songs -->
     <div class="song-list">
@@ -194,16 +195,34 @@
         <a href="https://www.youtube.com/watch?v=plSbcQqgqSQ" target="_blank" class="song-button">Play You Made it Feel Like Home 🎧</a>
     </div>
 
-    <a href="moon.jpg" target="_blank" class="button">Look at Dexter looking at the moon 🌙</a>
+    <button class="button" onclick="playDexterVideo()">Take A Moment, You Deserve It❤️</button>
+
+    <div id="video-section" style="display: none; margin-top: 40px;">
+    <video id="dexterVideo" width="80%" controls>
+        <source src="Video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
 
     <script>
-        function openPage() {
-            // Hide the opening screen and show the content
-            document.getElementById("opening-screen").style.display = "none";
-            document.querySelector(".content").classList.add("visible");
-        }
-    </script>
+    function openPage() {
+        document.getElementById("opening-screen").style.display = "none";
+        document.querySelector(".content").classList.add("visible");
+    }
+
+    function playDexterVideo() {
+        const videoSection = document.getElementById("video-section");
+        const video = document.getElementById("dexterVideo");
+
+        videoSection.style.display = "block";
+        video.scrollIntoView({ behavior: 'smooth' });
+        video.play();
+
+        video.onended = function() {
+            alert("No matter how damaged you think you are, nobody is perfect and I liked you just the way you were...In my own way, I am just as damaged. You deserve to be happy too, don't deny yourself that. You will find your Rita.");
+        };
+    }
+</script>
 
 </body>
 </html>
-
