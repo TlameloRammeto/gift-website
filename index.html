@@ -14,27 +14,29 @@
             padding: 50px;
             position: relative;
             height: 100vh;
-            min-height:100vh;
+            min-height: 100vh;
         }
-        
+
         h1 {
             font-size: 3em;
             color: #87CEEB; 
             margin-bottom: 20px;
             text-shadow: 0 0 15px #FF69B4, 0 0 30px #FF69B4, 0 0 45px #FF69B4;
         }
-        
+
         p {
             font-size: 1.2em;
             margin-bottom: 20px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
             color: #FF69B4;
         }
+
         .quote {
             font-style: italic;
             font-size: 1.5em;
             margin-bottom: 40px;
         }
+
         .button {
             background-color: #1414b8;
             color: #fff;
@@ -46,9 +48,11 @@
             display: inline-block;
             transition: background-color 0.3s ease;
         }
+
         .button:hover {
             background-color: #6a6a9e;
         }
+
         .stars {
             position: absolute;
             top: 0;
@@ -59,12 +63,14 @@
             opacity: 0.7;
             z-index: -1; 
         }
+
         .song-list {
             margin-top: 40px;
             display: flex;
             justify-content: center;
             flex-direction: column;
         }
+
         .song-button {
             margin: 10px;
             background-color: #4b4b8d;
@@ -76,9 +82,11 @@
             text-align: center;
             display: inline-block;
         }
+
         .song-button:hover {
             background-color: #6a6a9e;
         }
+
         .moon-button {
             background-color: #6a6a9e;
             color: #fff;
@@ -92,10 +100,12 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease;
         }
+
         .moon-button:hover {
             background-color: #5f5f89;
             transform: scale(1.1);
         }
+
         .moon-button:before {
             content: "🌙 ";
             font-size: 1.5em;
@@ -103,7 +113,7 @@
             left: -35px;
             top: 0;
         }
-        /* Opening Screen */
+
         .opening-screen {
             position: fixed;
             top: 0;
@@ -151,7 +161,6 @@
             display: block;
         }
 
-        /* Responsive Design */
         @media only screen and (max-width: 600px) {
             body {
                 padding: 20px;
@@ -166,6 +175,47 @@
                 font-size: 1em;
                 padding: 10px 20px;
             }
+        }
+
+        /* Custom Popup */
+        .custom-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .popup-content {
+            background-color: #2a2a40;
+            color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 0 15px #FF69B4;
+        }
+
+        .popup-content h3 {
+            margin-top: 0;
+            color: #FF69B4;
+        }
+
+        .popup-content button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #FF69B4;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            color: white;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -188,41 +238,49 @@
     
     <p><strong>GOOD-BYE SANGE SAKUBE</strong> - My Sweet Thing</p>
 
-    <!-- Buttons for Songs -->
     <div class="song-list">
         <a href="https://www.youtube.com/watch?v=V_Ydoe4Q-Gg" target="_blank" class="song-button">Play Weird Fishes 🎵</a>
         <a href="https://www.youtube.com/watch?v=m4iuOb8GKQ8" target="_blank" class="song-button">Play That Home 🎶</a>
         <a href="https://www.youtube.com/watch?v=plSbcQqgqSQ" target="_blank" class="song-button">Play You Made it Feel Like Home 🎧</a>
     </div>
 
-    <button class="button" onclick="playDexterVideo()">Take A Moment, You Deserve It❤️</button>
+    <button class="button" onclick="showPopup()">Take A Moment, You Deserve It❤️</button>
 
     <div id="video-section" style="display: none; margin-top: 40px;">
-    <video id="dexterVideo" width="80%" controls>
-        <source src="Video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
+        <video id="dexterVideo" width="80%" controls>
+            <source src="Video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Custom Popup -->
+    <div id="customPopup" class="custom-popup" style="display: none;">
+        <div class="popup-content">
+            <h3>Before you watch, I want you to know that...</h3>
+            <p>No matter how damaged you think you are, nobody is perfect and I liked you just the way you were. In my own way, I am just as damaged. You deserve to be happy too. You will find your Rita.</p>
+            <button onclick="startVideo()">Play Video</button>
+        </div>
+    </div>
 
     <script>
-    function openPage() {
-        document.getElementById("opening-screen").style.display = "none";
-        document.querySelector(".content").classList.add("visible");
-    }
+        function openPage() {
+            document.getElementById("opening-screen").style.display = "none";
+            document.querySelector(".content")?.classList.add("visible");
+        }
 
-    function playDexterVideo() {
-        const videoSection = document.getElementById("video-section");
-        const video = document.getElementById("dexterVideo");
+        function showPopup() {
+            document.getElementById("customPopup").style.display = "flex";
+        }
 
-        videoSection.style.display = "block";
-        video.scrollIntoView({ behavior: 'smooth' });
-        video.play();
-
-        video.onended = function() {
-            alert("No matter how damaged you think you are, nobody is perfect and I liked you just the way you were...In my own way, I am just as damaged. You deserve to be happy too, don't deny yourself that. You will find your Rita.");
-        };
-    }
-</script>
+        function startVideo() {
+            document.getElementById("customPopup").style.display = "none";
+            const videoSection = document.getElementById("video-section");
+            const video = document.getElementById("dexterVideo");
+            videoSection.style.display = "block";
+            video.scrollIntoView({ behavior: 'smooth' });
+            video.play();
+        }
+    </script>
 
 </body>
 </html>
